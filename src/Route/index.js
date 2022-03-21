@@ -5,12 +5,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import NavLinks from '../components/Navigation/NavLinks';
-
+import Colors from '../Colors';
 const Routing = () => {
   return (
     <Router>
-      <div className='App bg-gray-900 font-[roboto]  '>
-        <NavLinks />
+      <div className='bg-gray-900 font-[poppins]  '>
+        {/* <NavLinks /> */}
         <Switch>
           <Route path='/' exact>
             <PokemonList />

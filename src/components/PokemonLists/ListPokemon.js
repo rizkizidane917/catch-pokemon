@@ -3,6 +3,7 @@ import { GET_POKEMON_LIST } from '../../graphql/index';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import Card from './Card';
+import Loading from '../../element/loading';
 
 const ListPokemon = () => {
   const params = useParams();
@@ -15,7 +16,7 @@ const ListPokemon = () => {
     variables: { limit: 20, id: params.id },
   });
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Error...</h1>;
   return (
     <div>

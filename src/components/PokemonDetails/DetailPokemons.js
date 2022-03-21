@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { pokemonContext } from '../../context/DataContext';
 import Modal from './Modal';
+import Loading from '../../element/loading';
+import Header from './Header';
 const DetailPokemons = () => {
   const params = useParams();
   const { setOpenForm, myPokemon, deleteHandler } = useContext(pokemonContext);
@@ -15,7 +17,7 @@ const DetailPokemons = () => {
   } = useQuery(GET_POKEMON_BY_ID, {
     variables: { id: params.id },
   });
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Error...</h1>;
 
   const handleClick = () => {
@@ -28,20 +30,16 @@ const DetailPokemons = () => {
     }
   };
   return (
-    <div>
+    <>
       <Modal setOpenForm={setOpenForm} pokemons={pokemon_v2_pokemon} />
-      {pokemon_v2_pokemon &&
-        pokemon_v2_pokemon?.map((row) => {
-          return (
-            <div key={row.id}>
-              <h1>{row.id}</h1>
-              <h1>{row.name}</h1>
-              <img src={imageUrl(row.id)} style={{ width: '200px', height: '200px' }} />
-            </div>
-          );
-        })}
-      <button onClick={handleClick}>Catch</button>
-    </div>
+      <div className='text-center'>
+        <Header pokemons={pokemon_v2_pokemon} url={imageUrl} />
+
+        <button onClick={handleClick} className='text-white'>
+          Catch
+        </button>
+      </div>
+    </>
   );
 };
 

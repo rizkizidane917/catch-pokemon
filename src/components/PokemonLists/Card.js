@@ -12,16 +12,22 @@ const Card = (props) => {
     <div>
       {pokemonData &&
         pokemonData?.map((row) => {
+          // Uppercase first word
+          const name = row.name;
+          const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
           return (
-            <div key={row.id}>
-              <Link to={`/pokemon/${row.id}`} className='flex flex-row items-center bg-white rounded-3xl border shadow-md max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-7 py-2'>
-                <div className='flex flex-col justify-between p-5 leading-normal'>
-                  <h5 className='mb-2 text-sm font-light tracking-tight text-gray-900 dark:text-white uppercase '>#00{row.id}</h5>
-                  <h5 className='mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white uppercase'>{row.name}</h5>
-                </div>
-                <img className='w-full mx-auto' src={imageUrl(row.id)} style={{ width: '136px' }} />
-              </Link>
-            </div>
+            <Link
+              to={`/pokemon/${row.id}`}
+              data-testid={`${row.id}`}
+              key={row.id}
+              className='flex glex-row items-center max-w-xl bg-white bg-opacity-10 relative z-2 rounded-3xl shadow-5xl border border-r-0 border-b-0 border-opacity-30  backdrop-filter backdrop-blur-sm my-7 hover:bg-opacity-20'
+            >
+              <div className='flex flex-col justify-between p-5 leading-normal'>
+                <h5 className='mb-2 text-sm font-light tracking-tight text-gray-900 dark:text-white uppercase '>#00{row.id}</h5>
+                <h5 className='mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white  '>{nameCapitalized}</h5>
+              </div>
+              <img className='w-full mx-auto' src={imageUrl(row.id)} style={{ width: '136px' }} />
+            </Link>
           );
         })}
     </div>

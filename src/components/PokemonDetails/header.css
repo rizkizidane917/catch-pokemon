@@ -1,0 +1,15 @@
+.overlays::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 60%;
+  background-color: #0a592d;
+  position: absolute;
+  filter: blur(40px);
+  border-radius: 100%;
+  mix-blend-mode: normal;
+  left: 80px;
+  top: 100px;
+  opacity: 0.7;
+  z-index: 0;
+}
