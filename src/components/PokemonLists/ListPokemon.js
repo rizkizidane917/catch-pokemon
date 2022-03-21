@@ -7,7 +7,6 @@ import Loading from '../../element/loading';
 
 const ListPokemon = () => {
   const params = useParams();
-  // const [pokemod, setPokemod] = useState(pokemon_v2_pokemon);
   const {
     loading,
     error,

@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { imageUrl } from '../../graphql/index';
 import { pokemonContext } from '../../context/DataContext';
+
+import NavLinks from '../Navigation/NavLinks';
+import Text from '../../element/text/index';
 const MyList = () => {
   const { name, setName } = useContext(pokemonContext);
   function deleteHandler(id) {
@@ -11,7 +14,12 @@ const MyList = () => {
   }
   return (
     <div>
-      My List Pokemon
+      <NavLinks />
+
+      <Text textPrimary style={{ textAlign: 'center', marginTop: '2rem' }}>
+        My List Pokemon
+      </Text>
+
       {name &&
         name.map((row) => {
           return (
@@ -23,9 +31,6 @@ const MyList = () => {
               </div>
               <li>
                 <img src={imageUrl(row.id)} style={{ width: '120px' }} />
-              </li>
-              <li>
-                <button onClick={() => deleteHandler(row.id)}>Delete</button>
               </li>
             </ul>
           );

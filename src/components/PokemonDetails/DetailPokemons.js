@@ -3,12 +3,17 @@ import { GET_POKEMON_BY_ID, imageUrl } from '../../graphql/index';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { pokemonContext } from '../../context/DataContext';
+
+import PokeBall from '../../assets/pokeBall.png';
+import Button from '../../element/button/index';
 import Modal from './Modal';
 import Loading from '../../element/loading';
 import Header from './Header';
+import ModalFail from './Modal/ModalFail';
+import About from './About/About';
 const DetailPokemons = () => {
   const params = useParams();
-  const { setOpenForm, myPokemon, deleteHandler } = useContext(pokemonContext);
+  const { setOpenForm, setOpenFailForm, myPokemon, deleteHandler } = useContext(pokemonContext);
   const [catchingPokemon, setCatchingPokemon] = useState(null);
   const {
     loading,
@@ -26,18 +31,30 @@ const DetailPokemons = () => {
       setOpenForm(true);
       console.log('Succes');
     } else {
-      console.log('false');
+      setOpenFailForm(true);
+      console.log('Fail');
     }
   };
   return (
     <>
-      <Modal setOpenForm={setOpenForm} pokemons={pokemon_v2_pokemon} />
+      <Modal pokemons={pokemon_v2_pokemon} />
+      <ModalFail />
       <div className='text-center'>
         <Header pokemons={pokemon_v2_pokemon} url={imageUrl} />
-
-        <button onClick={handleClick} className='text-white'>
-          Catch
-        </button>
+        <Button onClick={handleClick} isLarge>
+          <div className='flex flex-row text-md font-normal'>
+            <img src={PokeBall} className='w-[20px] mr-2 animate-bounce' />
+            Catch Pokemon
+          </div>
+        </Button>
+      </div>
+      <div className='bg-white bg-opacity-10 text-white my-10 rounded-lg p-5'>
+        <div className='flex flex-row justify-between items-center  bg-red-500 rounded-sm py-2 '>
+          <h1>About</h1>
+          <h1>Stat</h1>
+          <h1>Moves</h1>
+        </div>
+        <About pokemons={pokemon_v2_pokemon} />
       </div>
     </>
   );

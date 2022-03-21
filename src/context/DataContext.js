@@ -1,32 +1,23 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 
 // create Context
 export const pokemonContext = createContext();
 
 const DataContext = ({ children }) => {
   const [nickName, setNickName] = useState('');
+  const [list, setList] = useState([]);
   const [name, setName] = useState([]);
-  const [myPokemon, setMyPokemon] = useState([]);
   const [openForm, setOpenForm] = useState(false);
-  const history = useHistory();
+  const [openFailForm, setOpenFailForm] = useState(false);
+
   // Get From Local Storage
   useEffect(() => {
     const dataStore = JSON.parse(localStorage.getItem('name'));
     if (dataStore) setName(dataStore);
   }, []);
-  // useEffect(() => {
-  //   const dataStore = JSON.parse(localStorage.getItem('pokemon'));
-  //   if (dataStore) setMyPokemon(dataStore);
-  // }, []);
-  // // Save To Local Storage
   useEffect(() => {
     localStorage.setItem('name', JSON.stringify(name));
   }, [name]);
-
-  // useEffect(() => {
-  //   localStorage.setItem('pokemon', JSON.stringify(myPokemon));
-  // }, [myPokemon]);
 
   // Add items My-List
   const addItemsHandler = (pokemon) => {
@@ -56,10 +47,12 @@ const DataContext = ({ children }) => {
         setNickName,
         name,
         setName,
+        list,
+        setList,
         openForm,
-        myPokemon,
-        setMyPokemon,
         setOpenForm,
+        openFailForm,
+        setOpenFailForm,
         // deleteHandler,
         addItemsHandler,
       }}
