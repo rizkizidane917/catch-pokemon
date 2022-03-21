@@ -7,11 +7,15 @@ const About = ({ pokemons = [] }) => {
       {pokemons &&
         pokemons?.map((row) => {
           return (
-            <div className='w-full'>
+            <div className='w-full mt-5'>
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
                 <Text textSecondary>Types </Text>
                 {row.pokemon_v2_pokemontypes.map((row) => {
-                  return <Text textSecondary>{row.pokemon_v2_type.name}</Text>;
+                  return (
+                    <Text textSecondary className='font-bold'>
+                      {row.pokemon_v2_type.name}
+                    </Text>
+                  );
                 })}
               </div>
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
@@ -21,6 +25,16 @@ const About = ({ pokemons = [] }) => {
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
                 <Text textSecondary>Weight </Text>
                 <Text textSecondary>{row.weight} (kg)</Text>
+              </div>
+              <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
+                <Text textSecondary>Abilities </Text>
+                {row.pokemon_v2_pokemonabilities.map((row) => {
+                  return (
+                    <Text textSecondary className='font-bold'>
+                      {row.pokemon_v2_ability.name}
+                    </Text>
+                  );
+                })}
               </div>
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
                 <Text textSecondary>Experience </Text>
