@@ -27,7 +27,7 @@ const About = ({ pokemons = [] }) => {
                   Height{' '}
                 </Text>
 
-                <Text textSecondary>{row.height} (m)</Text>
+                <Text textSecondary>0.{row.height} (m)</Text>
               </div>
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
                 <Text textSecondary className='font-[400]'>

@@ -26,6 +26,8 @@ const MyList = () => {
         {name.length > 0 ? (
           name &&
           name.map((row) => {
+            const name = row.nickName;
+            const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
             return (
               <div>
                 <ul
@@ -39,7 +41,7 @@ const MyList = () => {
                   <div className='flex flex-col justify-between p-5 leading-normal'>
                     <Text textSecondary>#00{row.id}</Text>
                     <Text textPrimary>{row.name}</Text>
-                    <Text textSecondary>{row.nickName}</Text>
+                    <Text textSecondary>{nameCapitalized}</Text>
                   </div>
                   <img src={imageUrl(row.id)} style={{ width: '120px' }} className='w-full mx-auto' />
                 </ul>

@@ -6,7 +6,6 @@ import { pokemonContext } from '../../context/DataContext';
 import Text from '../../element/text/index';
 
 const Card = (props) => {
-  const { name } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const pokemonData = pokemons?.map((row) => ({

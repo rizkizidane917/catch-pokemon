@@ -4,17 +4,10 @@ import { pokemonContext } from '../../../context/DataContext';
 import Button from '../../../element/button';
 
 const ModalSuccess = (props) => {
-  const { openForm, setOpenForm, nickName, name, setNickName, addItemsHandler } = useContext(pokemonContext);
+  const { openForm, setOpenForm, nickName, setNickName, addItemsHandler } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const processData = pokemons[0] || {};
-
-  const CheckedName = (e) => {
-    const nickNames = name.findOne({ nickName });
-    console.log(nickNames);
-    // if (nickNames) return alert('Name is already exist');
-    // else setNickName(e.target.value);
-  };
 
   return (
     <div>
@@ -32,7 +25,6 @@ const ModalSuccess = (props) => {
                     autoComplete='off'
                     value={nickName}
                     onChange={(e) => setNickName(e.target.value)}
-                    // onChange={CheckedName}
                     name='nickName'
                     type='text'
                     placeholder='Give The Nickname...'
@@ -42,7 +34,7 @@ const ModalSuccess = (props) => {
                 {/*footer*/}
                 <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
                   <button
-                    className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                    className='text-gray-900 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 '
                     type='button'
                     onClick={() => setOpenForm(false)}
                   >
