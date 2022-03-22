@@ -22,9 +22,8 @@ const Card = (props) => {
           return (
             <Link
               to={`/pokemon/${row.id}`}
-              data-testid={`${row.id}`}
               key={row.id}
-              className='flex flex-row items-center max-w-xl bg-white bg-opacity-10 relative z-2 rounded-3xl shadow-5xl border border-r-0 border-b-0 border-opacity-30  backdrop-filter backdrop-blur-sm my-7 hover:bg-opacity-20'
+              className='flex flex-row items-center max-w-xl bg-white bg-opacity-10 relative z-2 rounded-3xl shadow-5xl border border-r-0 border-b-0 border-opacity-30  backdrop-filter backdrop-blur-sm my-7 hover:bg-opacity-20 hover:-translate-y-3 ease-in-out duration-200'
             >
               <div className='flex flex-col justify-between p-5 leading-normal'>
                 <Text textSecondary>#00{row.id}</Text>

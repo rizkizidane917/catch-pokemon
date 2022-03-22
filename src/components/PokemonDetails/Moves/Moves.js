@@ -15,7 +15,7 @@ const Moves = ({ pokemons = [] }) => {
                   } else {
                     return (
                       <div className='border border-dashed py-2 hover:border-yellow-400 cursor-pointer'>
-                        <Text textSecondary className='text-center pt-2 '>
+                        <Text key={moves.pokemon_v2_move.id} textSecondary className='text-center pt-2 '>
                           {moves.pokemon_v2_move.name}
                         </Text>
                       </div>

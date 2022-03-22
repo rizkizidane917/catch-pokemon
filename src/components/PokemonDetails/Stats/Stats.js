@@ -7,13 +7,20 @@ const Stats = ({ pokemons = [] }) => {
       {pokemons &&
         pokemons?.map((row) => {
           return (
-            <div className='w-full mt-5'>
+            <div className='w-full '>
               {row.pokemon_v2_pokemonstats.map((row) => {
                 return (
-                  <div className='grid grid-rows-1 grid-cols-3 gap-2 mb-5 lg:mb-3'>
-                    <Text textSecondary className='font-bold'>
-                      {row.pokemon_v2_stat.name}
-                    </Text>
+                  <div className='mb-5 lg:mb-3'>
+                    <div className='flex items-center justify-between mb-1'>
+                      <div className='flex items-center'>
+                        <Text textSecondary>{row.pokemon_v2_stat.name}</Text>
+                      </div>
+                      <Text textSecondary>{row.base_stat}%</Text>
+                    </div>
+
+                    <div className='w-full bg-gray-200 h-1 mb-6'>
+                      <div className='bg-yellow-400 h-1' style={{ width: `${row.base_stat}%` }}></div>
+                    </div>
                   </div>
                 );
               })}

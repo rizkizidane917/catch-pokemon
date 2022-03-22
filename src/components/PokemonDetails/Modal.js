@@ -1,16 +1,18 @@
 import React, { useState, useContext } from 'react';
 
 import { pokemonContext } from '../../context/DataContext';
+import Button from '../../element/button';
 
 const Modal = (props) => {
   const { openForm, setOpenForm, nickName, name, setNickName, addItemsHandler } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const processData = pokemons[0] || {};
-  const CheckedName = (e, person) => {
-    const filterName = name.filter((names) => names.nickName !== person.nickName);
-    console.log(filterName);
-    setNickName(e.target.value);
+  const CheckedName = (e) => {
+    const nickNames = name.findOne({ nickName });
+    console.log(nickNames);
+    // if (nickNames) return alert('Name is already exist');
+    // else setNickName(e.target.value);
   };
 
   return (
@@ -27,8 +29,9 @@ const Modal = (props) => {
                   <p className='my-4 text-blueGray-500 text-lg leading-relaxed'>Give a Wild Name !!</p>
                   <input
                     value={nickName}
-                    // onChange={(e) => setNickName(e.target.value)}
-                    onChange={CheckedName}
+                    onChange={(e) => setNickName(e.target.value)}
+                    // onChange={CheckedName}
+                    name='nickName'
                     type='text'
                     placeholder='Give The Nickname...'
                     className='px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full'
@@ -43,13 +46,9 @@ const Modal = (props) => {
                   >
                     Release
                   </button>
-                  <button
-                    onClick={() => addItemsHandler(processData)}
-                    className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                    type='button'
-                  >
+                  <Button isSmall onClick={() => addItemsHandler(processData)}>
                     Catch
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

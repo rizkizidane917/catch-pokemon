@@ -7,7 +7,7 @@ const About = ({ pokemons = [] }) => {
       {pokemons &&
         pokemons?.map((row) => {
           return (
-            <div className='w-full mt-5'>
+            <div className='w-full mt-5' key={row.id}>
               <div className='grid grid-rows-1 grid-cols-3 gap-3 mb-5 lg:mb-3'>
                 <Text textSecondary className='font-[400]'>
                   Types{' '}

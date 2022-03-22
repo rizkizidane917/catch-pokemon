@@ -1,16 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { imageUrl } from '../../graphql/index';
 import { pokemonContext } from '../../context/DataContext';
+import { Link } from 'react-router-dom';
 
+import Delete from '../../assets/remove.png';
 import NavLinks from '../Navigation/NavLinks';
 import Text from '../../element/text/index';
 const MyList = () => {
   const { name, setName } = useContext(pokemonContext);
   function deleteHandler(id) {
-    const data = name.filter((row) => console.log(row.id));
-    // const data = localStorage.removeItem('name', JSON.stringify(dataName));
-    console.log(data);
-    // setName(data);
+    // const data = name.filter((row) => console.log(row.id));
+    // // const data = localStorage.removeItem('name', JSON.stringify(dataName));
+    // console.log(data);
+    // // setName(data);
+    console.log('delete');
   }
   return (
     <div className='h-screen'>
@@ -21,15 +24,20 @@ const MyList = () => {
       {name &&
         name.map((row) => {
           return (
-            <ul key={row.id} className='flex flex-row items-center bg-white rounded-lg border shadow-md max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-5'>
+            <ul
+              to={`/pokemon/${row.id}`}
+              key={row.id}
+              className='flex flex-row items-center max-w-xl bg-white bg-opacity-10 relative z-2 rounded-3xl shadow-5xl border border-r-0 border-b-0 border-opacity-30  backdrop-filter backdrop-blur-sm my-7 hover:bg-opacity-20 hover:-translate-y-3 ease-in-out duration-200'
+            >
+              <button onClick={deleteHandler}>
+                <img src={Delete} className='w-[25px] relative bottom-14 z-10 ' />
+              </button>
               <div className='flex flex-col justify-between p-5 leading-normal'>
-                <li className='mb-2 text-lg font-light tracking-tight text-gray-900 dark:text-white uppercase'>#00{row.id}</li>
-                <li className='mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white uppercase'>{row.name}</li>
-                <li className='mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white uppercase'>{row.nickName}</li>
+                <Text textSecondary>#00{row.id}</Text>
+                <Text textPrimary>{row.name}</Text>
+                <Text textSecondary>{row.nickName}</Text>
               </div>
-              <li>
-                <img src={imageUrl(row.id)} style={{ width: '120px' }} />
-              </li>
+              <img src={imageUrl(row.id)} style={{ width: '120px' }} className='w-full mx-auto' />
             </ul>
           );
         })}

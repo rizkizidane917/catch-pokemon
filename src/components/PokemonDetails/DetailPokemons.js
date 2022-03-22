@@ -54,7 +54,7 @@ const DetailPokemons = () => {
           </div>
         </Button>
       </div>
-      <div className='bg-white bg-opacity-10 text-white my-10 rounded-lg p-5 h-96'>
+      <div className='bg-white bg-opacity-10 text-white my-10 rounded-lg p-5 h-100'>
         <div className='flex flex-row justify-between items-center rounded-sm py-2 '>
           <div>
             <Button isSmall onClick={() => setToggleClick(0)}>
