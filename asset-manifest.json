@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/catch-pokemon/static/css/main.c44639f3.css",
-    "main.js": "/catch-pokemon/static/js/main.c09636dc.js",
+    "main.css": "/catch-pokemon/static/css/main.b286f9bc.css",
+    "main.js": "/catch-pokemon/static/js/main.e8671588.js",
     "static/js/787.ab378faf.chunk.js": "/catch-pokemon/static/js/787.ab378faf.chunk.js",
     "static/media/logo.png": "/catch-pokemon/static/media/logo.80b15368bbfd21c72a04.png",
     "static/media/remove.png": "/catch-pokemon/static/media/remove.3c662b752278fc52f408.png",
     "index.html": "/catch-pokemon/index.html",
-    "main.c44639f3.css.map": "/catch-pokemon/static/css/main.c44639f3.css.map",
-    "main.c09636dc.js.map": "/catch-pokemon/static/js/main.c09636dc.js.map",
+    "main.b286f9bc.css.map": "/catch-pokemon/static/css/main.b286f9bc.css.map",
+    "main.e8671588.js.map": "/catch-pokemon/static/js/main.e8671588.js.map",
     "787.ab378faf.chunk.js.map": "/catch-pokemon/static/js/787.ab378faf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c44639f3.css",
-    "static/js/main.c09636dc.js"
+    "static/css/main.b286f9bc.css",
+    "static/js/main.e8671588.js"
   ]
 }
