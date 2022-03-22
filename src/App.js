@@ -9,11 +9,11 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <DataContext>
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <DataContext>
         <Routing />
-      </ApolloProvider>
-    </DataContext>
+      </DataContext>
+    </ApolloProvider>
   );
 }
 

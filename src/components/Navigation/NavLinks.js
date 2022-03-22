@@ -12,7 +12,6 @@ const NavLinks = () => {
         <Link to='/' className='text-2l text-white font-extrabold'>
           <img src={Logo} style={{ width: '103px', height: '38px' }} />
         </Link>
-
         <Button isSmall type='link' href='/my-list'>
           {name.length} Owned
         </Button>

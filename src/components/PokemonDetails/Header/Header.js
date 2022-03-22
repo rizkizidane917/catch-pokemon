@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Text from '../../element/text/index';
+import Text from '../../../element/text/index';
 
 import './header.css';
 const Header = (props) => {

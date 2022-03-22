@@ -12,7 +12,7 @@ const ListPokemon = () => {
     error,
     data: { pokemon_v2_pokemon = [] } = {},
   } = useQuery(GET_POKEMON_LIST, {
-    variables: { limit: 20, id: params.id },
+    variables: { limit: 50, id: params.id },
   });
 
   if (loading) return <Loading />;

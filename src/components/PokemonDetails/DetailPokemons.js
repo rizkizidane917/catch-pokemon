@@ -6,15 +6,14 @@ import { pokemonContext } from '../../context/DataContext';
 
 import PokeBall from '../../assets/pokeBall.png';
 import Button from '../../element/button/index';
-import Modal from './Modal';
+import ModalSuccess from './Modal/ModalSuccess';
 import Loading from '../../element/loading';
-import Header from './Header';
+import Header from './Header/Header';
 import ModalFail from './Modal/ModalFail';
 import About from './About/About';
 import Moves from './Moves/Moves';
-
-import './DetailPokemons.css';
 import Stats from './Stats/Stats';
+
 const DetailPokemons = () => {
   const params = useParams();
   const { setOpenForm, setOpenFailForm, myPokemon, deleteHandler } = useContext(pokemonContext);
@@ -34,23 +33,20 @@ const DetailPokemons = () => {
     setCatchingPokemon(Math.random() < 0.5);
     if (catchingPokemon === true) {
       setOpenForm(true);
-      console.log('Succes');
     } else {
       setOpenFailForm(true);
-      console.log('Fail');
     }
   };
 
   return (
     <>
-      <Modal pokemons={pokemon_v2_pokemon} />
+      <ModalSuccess pokemons={pokemon_v2_pokemon} />
       <ModalFail />
       <div className='text-center'>
         <Header pokemons={pokemon_v2_pokemon} url={imageUrl} />
-        <Button onClick={handleClick} isLarge>
-          <div className='flex flex-row text-md font-normal'>
-            <img src={PokeBall} className='w-[20px] mr-2 animate-bounce' />
-            Catch Pokemon
+        <Button isImages onClick={handleClick}>
+          <div className='flex flex-row text-md font-normal '>
+            <img src={PokeBall} className='w-[35px] animate-pulse ' />
           </div>
         </Button>
       </div>

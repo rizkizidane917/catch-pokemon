@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
 
-import { pokemonContext } from '../../context/DataContext';
-import Button from '../../element/button';
+import { pokemonContext } from '../../../context/DataContext';
+import Button from '../../../element/button';
 
-const Modal = (props) => {
+const ModalSuccess = (props) => {
   const { openForm, setOpenForm, nickName, name, setNickName, addItemsHandler } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const processData = pokemons[0] || {};
+
   const CheckedName = (e) => {
     const nickNames = name.findOne({ nickName });
     console.log(nickNames);
@@ -28,6 +29,7 @@ const Modal = (props) => {
                   <p className='my-4 text-blueGray-500 text-lg leading-relaxed'>Wow You Catch {processData.name}..</p>
                   <p className='my-4 text-blueGray-500 text-lg leading-relaxed'>Give a Wild Name !!</p>
                   <input
+                    autoComplete='off'
                     value={nickName}
                     onChange={(e) => setNickName(e.target.value)}
                     // onChange={CheckedName}
@@ -60,4 +62,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default ModalSuccess;

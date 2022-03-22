@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 // create Context
 export const pokemonContext = createContext();
@@ -10,7 +9,7 @@ const DataContext = ({ children }) => {
   const [name, setName] = useState([]);
   const [openForm, setOpenForm] = useState(false);
   const [openFailForm, setOpenFailForm] = useState(false);
-  const history = useHistory();
+
   // Get From Local Storage
   useEffect(() => {
     const dataStore = JSON.parse(localStorage.getItem('name'));
@@ -31,16 +30,8 @@ const DataContext = ({ children }) => {
     };
     setName([...name, names]);
     setNickName('');
-    alert('You Catched');
-    history.push('/my-list');
     setOpenForm(false);
   };
-  // Delete Items My-List
-  // function deleteHandler(id) {
-  //   const dataName = name.filter((row) => row.id !== id);
-  //   // const data = localStorage.removeItem('name', JSON.stringify(dataName));
-  //   setName(data);
-  // }
 
   return (
     <pokemonContext.Provider
@@ -55,14 +46,12 @@ const DataContext = ({ children }) => {
         setOpenForm,
         openFailForm,
         setOpenFailForm,
-        // deleteHandler,
         addItemsHandler,
       }}
     >
       {children}
     </pokemonContext.Provider>
   );
-  // return <pokemonContext.Provider value={{ name: state.name, pokemonData: state.pokemonData, addNameToMyPokemonList }}>{children}</pokemonContext.Provider>;
 };
 
 export default DataContext;

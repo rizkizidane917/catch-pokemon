@@ -19,7 +19,7 @@ const Stats = ({ pokemons = [] }) => {
                     </div>
 
                     <div className='w-full bg-gray-200 h-1 mb-6'>
-                      <div className='bg-yellow-400 h-1' style={{ width: `${row.base_stat}%` }}></div>
+                      <div className='bg-green-400 h-1' style={{ width: `${row.base_stat}%` }}></div>
                     </div>
                   </div>
                 );

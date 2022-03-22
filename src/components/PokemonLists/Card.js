@@ -6,6 +6,7 @@ import { pokemonContext } from '../../context/DataContext';
 import Text from '../../element/text/index';
 
 const Card = (props) => {
+  const { name } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const pokemonData = pokemons?.map((row) => ({
@@ -19,6 +20,7 @@ const Card = (props) => {
           // Uppercase first word
           const name = row.name;
           const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+
           return (
             <Link
               to={`/pokemon/${row.id}`}

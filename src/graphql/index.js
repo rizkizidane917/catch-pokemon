@@ -14,21 +14,25 @@ export const GET_POKEMON_BY_ID = gql`
       pokemon_v2_pokemonabilities {
         id
         pokemon_v2_ability {
+          id
           name
         }
       }
       pokemon_v2_pokemonstats {
         base_stat
         pokemon_v2_stat {
+          id
           name
         }
       }
       pokemon_v2_pokemonmoves {
         pokemon_v2_move {
+          id
           name
         }
       }
       pokemon_v2_pokemontypes {
+        id
         pokemon_v2_type {
           name
         }
@@ -38,7 +42,7 @@ export const GET_POKEMON_BY_ID = gql`
 `;
 export const GET_POKEMON_LIST = gql`
   query GetPokemon {
-    pokemon_v2_pokemon(limit: 20) {
+    pokemon_v2_pokemon(limit: 50) {
       id
       name
       base_experience
