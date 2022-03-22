@@ -3,10 +3,15 @@ import React, { useState, useContext } from 'react';
 import { pokemonContext } from '../../context/DataContext';
 
 const Modal = (props) => {
-  const { openForm, setOpenForm, nickName, setNickName, addItemsHandler } = useContext(pokemonContext);
+  const { openForm, setOpenForm, nickName, name, setNickName, addItemsHandler } = useContext(pokemonContext);
   const { pokemons } = props;
 
   const processData = pokemons[0] || {};
+  const CheckedName = (e, person) => {
+    const filterName = name.filter((names) => names.nickName !== person.nickName);
+    console.log(filterName);
+    setNickName(e.target.value);
+  };
 
   return (
     <div>
@@ -22,7 +27,8 @@ const Modal = (props) => {
                   <p className='my-4 text-blueGray-500 text-lg leading-relaxed'>Give a Wild Name !!</p>
                   <input
                     value={nickName}
-                    onChange={(e) => setNickName(e.target.value)}
+                    // onChange={(e) => setNickName(e.target.value)}
+                    onChange={CheckedName}
                     type='text'
                     placeholder='Give The Nickname...'
                     className='px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full'

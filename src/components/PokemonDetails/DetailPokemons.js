@@ -11,10 +11,15 @@ import Loading from '../../element/loading';
 import Header from './Header';
 import ModalFail from './Modal/ModalFail';
 import About from './About/About';
+import Moves from './Moves/Moves';
+
+import './DetailPokemons.css';
+import Stats from './Stats/Stats';
 const DetailPokemons = () => {
   const params = useParams();
   const { setOpenForm, setOpenFailForm, myPokemon, deleteHandler } = useContext(pokemonContext);
   const [catchingPokemon, setCatchingPokemon] = useState(null);
+  const [toggleClick, setToggleClick] = useState(0);
   const {
     loading,
     error,
@@ -35,6 +40,7 @@ const DetailPokemons = () => {
       console.log('Fail');
     }
   };
+
   return (
     <>
       <Modal pokemons={pokemon_v2_pokemon} />
@@ -48,13 +54,35 @@ const DetailPokemons = () => {
           </div>
         </Button>
       </div>
-      <div className='bg-white bg-opacity-10 text-white my-10 rounded-lg p-5'>
-        <div className='flex flex-row justify-between items-center  bg-red-500 rounded-sm py-2 '>
-          <h1>About</h1>
-          <h1>Stat</h1>
-          <h1>Moves</h1>
+      <div className='bg-white bg-opacity-10 text-white my-10 rounded-lg p-5 h-96'>
+        <div className='flex flex-row justify-between items-center rounded-sm py-2 '>
+          <div>
+            <Button isSmall onClick={() => setToggleClick(0)}>
+              About
+            </Button>
+          </div>
+          <div>
+            <Button isSmall onClick={() => setToggleClick(1)}>
+              Stats
+            </Button>
+          </div>
+          <div>
+            <Button isSmall onClick={() => setToggleClick(2)}>
+              Moves
+            </Button>
+          </div>
         </div>
-        <About pokemons={pokemon_v2_pokemon} />
+        <div className='pt-3'>
+          <div hidden={toggleClick !== 0}>
+            <About pokemons={pokemon_v2_pokemon} />
+          </div>
+          <div hidden={toggleClick !== 1}>
+            <Stats pokemons={pokemon_v2_pokemon} />
+          </div>
+          <div hidden={toggleClick !== 2}>
+            <Moves pokemons={pokemon_v2_pokemon} />
+          </div>
+        </div>
       </div>
     </>
   );

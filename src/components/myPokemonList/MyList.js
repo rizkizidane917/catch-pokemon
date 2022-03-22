@@ -13,13 +13,11 @@ const MyList = () => {
     // setName(data);
   }
   return (
-    <div>
+    <div className='h-screen'>
       <NavLinks />
-
-      <Text textPrimary style={{ textAlign: 'center', marginTop: '2rem' }}>
-        My List Pokemon
+      <Text textPrimary className='text-center mt-10'>
+        My Pokemon List
       </Text>
-
       {name &&
         name.map((row) => {
           return (
